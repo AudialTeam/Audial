@@ -1,0 +1,80 @@
+console.log("obj = " +obj);
+			console.log("obj stringified = " + JSON.stringify(obj));
+			
+			if(obj.error){ // this catches a bad API key, missing parameter, etc...
+				var message = obj.message;
+				document.querySelector("#dynamicContent").innerHTML = "<b>Error: " + message + "</b>";
+				$("#dynamicContent").fadeIn(1000);
+				return; // bail out
+			}
+			
+			if (obj.events && obj.events.total == 0){ // if no events are found
+				document.querySelector("#dynamicContent").innerHTML = "<p>No events found</p>";
+				$("#dynamicContent").fadeIn(1000);
+				return; // bail out
+			}
+			
+			// otherwise, start parsing!
+			var total = obj.events['@attr'].total;
+			var artist = obj.events['@attr'].artist;
+			
+			var allEvents = obj.events.event;
+			console.log("allEvents.length = " + allEvents.length);
+			var bigString = "<p>" + total + " events found with <em>" + artist + "</em></p><hr>";
+
+			/*
+				If there is only one event, Last.fm returns a single object, NOT an
+				array. This is really annoying behavior!
+			*/
+			if (!(allEvents instanceof Array)){
+				allEvents = [allEvents]; // put the object in an array
+			}
+			clearMarkers();
+			for (var i=0;i<allEvents.length;i++)
+			{
+				// get a bunch of values
+				var event = allEvents[i];
+				var headliner = event.artists.headliner;
+				var artistList = event.artists.artist;
+				var artistText = "";
+				var vLoc = {x: Number(event.venue.location["geo:point"]["geo:lat"]), y: Number(event.venue.location["geo:point"]["geo:long"])}; 
+				if(artistList instanceof Array)
+				{
+					artistText = artistList.join(", ");
+				}
+				var title = event.title;
+				var date = event.startDate;
+				var venueName = event.venue.name;
+				var venueStreet = event.venue.location.street;
+				
+				var venueCity = event.venue.location.city;
+				var img = event.image[event.image.length-1]["#text"];
+				var link = event.url;
+				var line = "<div class='eventDiv'>";
+				line += "</div>";
+				
+				if(location)
+					addMarker(vLoc.x, vLoc.y, headliner + "<br>" + title + "<br>" + venueCity);
+
+				// do a bunch of concatenation			
+				bigString+= "<h4>" +  title + "<h4>";
+				bigString+= "<h4 id='artist'>" + "Headliner" + "</h4>";
+				bigString+=  artistText;
+				bigString+= "<h4>" + "Date" + "</h4>";
+				bigString+= date;
+				bigString+= "<h4>" + "Venue Name" + "</h4>";
+				bigString+= venueName;
+				bigString+= "<h4>" + "Venue Street" + "</h4>";
+				bigString+= venueStreet;
+				bigString+= "<h4>" + "Venue City" + "</h4>";
+				bigString+= venueCity;
+				bigString+= "<h4>" + "Image" + "</h4>";
+				bigString+= "<img src = " + img + "></img>";
+				bigString+= "<h4>" + "Link" + "</h4>";
+				bigString+= "<a href= " + link + ">" + link + "</a>";
+				bigString+= line;
+			}
+			
+			// update our UI
+			document.querySelector("#dynamicContent").innerHTML = bigString;
+			$("#dynamicContent").fadeIn(500);

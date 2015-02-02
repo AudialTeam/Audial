@@ -1,0 +1,166 @@
+<style>
+	<?php
+		/*** set the content type header ***/
+		/*** Without this header, it wont work ***/
+		header("Content-type: text/css");
+	?>
+  
+	.overlay{
+		position: absolute;
+		z-index: 2;
+		min-height: 50px;
+		min-width: 50px;
+		float: left;
+	}
+	
+	.plus{
+		
+	}
+	
+	.minus{
+		
+	}
+	
+	html{
+		background-color: <?php
+			header("Content-type: text/css");
+			if(array_key_exists('mode',$_GET)){
+				$mode = $_GET['mode'];
+			}
+			else{
+				$mode = "music";
+			}
+			if($mode == "music"){
+				echo "rgb(51,106,127)";
+			}
+			else
+				echo "rgb(0,51,63)";
+		?>;
+	}
+	
+	@font-face {
+		font-family: 'Guardians Regular';
+		src: url('http://www.fontsaddict.com/fontface/guardians-regular.ttf');
+	}
+	
+	*{
+		font-family: 'Guardians Regular';
+		text-align: center;
+	}
+	
+	#topSection{
+		opacity: 0;
+	}
+	
+	#input{
+		width: 100%;
+	}
+	
+	a, a:hover, a:visited, a:active{
+		color: rgb(102,204,204);
+		text-decoration: none;
+	}
+	
+	input{
+		color: rgb(102,204,204);
+		width: 100%;
+		height: 50px;
+		padding-top: 25px;
+		padding-bottom: 20px;
+		font-size: 36px;
+		box-shadow: inset 0 0 0 10px rgb(102,153,153);
+		border: none;
+		background: rgb(51,153,153);
+	}
+	
+	.desc{
+		color: rgb(102,153,153);
+		letter-spacing: 2px;
+	}
+	
+	.data-a{
+	}
+	
+	.data-b{
+		color: #399;
+	}
+	
+	.image{
+		height: 200px;
+		width: 200px;
+		float: left;
+		margin-right: 50px;
+	}
+	
+	#hero_image{
+		height: 240px !important;
+		display: block;
+		background-color: rgb(51,106,127);
+		background-image: url('0.png');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	
+	#RESULTS{
+		clear:both;
+		width:80%;
+		margin: 0 auto;
+		padding-top: 50px;
+	}
+	
+	#ResultHeader{
+		
+	}
+	
+	.item{
+		margin-bottom:  100px;
+		background-color: #0B3E52;
+		border: 10px solid #1F566B;
+		min-height: 105px;
+	}
+	
+	.text{
+		vertical-align: middle;
+	}
+	
+	#ResultHeader{
+		color: rgb(132,234,234) !important;
+		padding-bottom: 20px;
+	}
+	
+	audio {
+		clear: both;
+		padding: 0px;
+		border: none;
+		margin: 0 auto;
+		width: 100%;
+	}
+	
+	@media (max-width: 900px){
+		.title,.data-b,.image, audio{
+			float: none;
+			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
+			padding: 0px;
+		}
+		
+		.image{ 
+			width: 200px;
+			height: 200px;
+			margin: 0px;
+			text-align: center;
+		
+		}
+		
+		.item{
+			overflow-x: hidden;
+			min-height: 300px;
+		}
+		
+		.item img{
+			border: 10px inset rgb(102,153,153);
+		}
+	}
+  </style>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<style type="text/css">
+		*{ margin: 0 auto; padding; 0px; }
+		body { margin: 0; padding: 0; background: #999; width: 100%;}
+		body[target=img]{ width: same-as-width; }
+		canvas { display: block; margin: 0.5em auto; background: #fff; }
+		.shadow {-moz-box-shadow: 3px 5px 6px #222; -webkit-box-shadow: 3px 5px 6px #222; box-shadow: 3px 5px 6px #222;}
+		.text-shadow {text-shadow: 1px 5px 5px rgba(155,155,25,200); }
+		boxed { background: rgba(0,100,250,255); }
+		a { color: #099; }
+		a:hover { color: #8ff; }
+		.hoverGlow{
+			color:#00267F;
+			font-family:PressStart;
+			-webkit-transition: 0.3s ease-out;
+			-moz-transition: 0.3s ease-out;
+			transition: 0.3s ease-out;
+		}
+		img.hoverGlow:focus, img.hoverGlow:hover, img.hoverGlow:active{
+			-webkit-transition: 0.2s ease-in;
+			-moz-transition: 0.2s ease-in;
+			transition: 0.2s ease-in;
+			-webkit-filter: invert(70%);
+			filter: invert(30%);
+		}
+		
+		ddocsection { padding: 10px; width: 100%; background-color: #003524; color: #fff;}
+		ddocheading { padding: 10%; display: inline; text-align:center; background-color: #002004; color: #fff;}
+		h3 { display: inline-block; text-align: center; }
+		ddoctext { padding: 0.5%; color: #056;}
+		#appLink{ transition: 0.1s; background-color: #202020; text-shadow: 0px 1px 1px #4d4d4d; cursor: pointer; color: #151515; height: 100%;}
+		#appLink:hover{ transition: 0.2s; background-color: #151515; text-shadow: 0px 1px 1px #4d4d4d; color: #202020; }
+		header { 
+			position: fixed; 
+			-webkit-transition: 0.2s ease-in;
+			-moz-transition: 0.2s ease-in;
+			transition: 0.2s ease-in;
+		}
+
+		@media screen and (max-width: 480px){
+			*{
+				border-width: 0px !important;
+			}
+			header {
+				position: absolute; 
+				-webkit-transition: 0.2s ease-in;
+				-moz-transition: 0.2s ease-in;
+				transition: 0.2s ease-in;
+				margin-bottom: same-as-height;
+			} 
+		}
+	</style>
+	<link rel="image_src" type="image/png" href="blue.png" />
+	<link rel="image_src" type="image/png" href="ellie.png">
+	<link href='http://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+	<title>Audial</title>
+</head>
+<body>
+	<header id="header" style="width: 100%; background-color: #022; margin-top:00px; margin-bottom:00px; z-index: 100;">
+		<section style="z-index:3; position: fixed; right: 15px;"> 
+			<a href="http://www.argzero.org" style="text-decoration: none;">
+				<p class="font" style="float:right; margin-right: 15px; font-family: 'Press Start 2P', cursive; font-size: 12px; margin-top: 17px;">portfolio</p> 
+			</a>
+		</section>
+		<section style="color:#fff; z-index:3; top:3px; position: fixed; left: 15px;"> 
+			<img class="hoverGlow" src="audial.png" alt="Audial Symbol" style="width:40px; height:40px; border: none; background-color: rgba(100,0,0,0.1);">
+		</section>
+		<section style="color:#00767F; width: 100%; z-index: 0; -moz-box-shadow: inset 0 0 10px 10px #011; text-shadow: 2px 1px 2px #011; -webkit-box-shadow: inset 0 0 10px 10px #011; box-shadow: inset 0 0 10px 10px #011; padding-bottom: 10px; padding-top:10px;">
+			<p style="text-align: center; font-family: 'Press Start 2P', cursive; font-size: 24px; text-align: center; height: 25px; margin: 0px;">Audial</p> 
+		</section>
+		<section id="appLink" style="padding-top:5px; padding-bottom: 5px; z-index: 0; text-decoration:none; -moz-box-shadow: inset 0 0 2px 2px #000; -webkit-box-shadow: inset 0 0 2px 2px #000; box-shadow: inset 0 0 2px 2px #000;">
+			<p onclick="window.location.href = 'http://audial.argzero.org';" style="font-size: 18px; vertical-align: middle; text-align: center;  font-family: 'Press Start 2P'">LINK</p>
+		</section>
+	</header>
+	<p style="height:73px; width: 100% margin: 0px;"></p>
+	<div class="ddocsection" style="padding: 0px; padding-top: 0px; background-color: #003500; width:100%; min-height:200px; padding-bottom:20px; font-family: 'Press Start 2P', cursive; background-color: #004444;">
+		<h3 class="ddocheading" style="width: 100%; margin-top:0px; margin-bottom:5px; height: 40px; font-size: 24px; background-color: #002004; color: #fff; vertical-align: middle; padding-top:10px;">Concept and Abstract</h3>
+		<div style="width:85%; margin: 0 auto; margin-top: 0px; padding: 0px;"> 
+			<p class="ddoctext" style="line-height: 2.0; margin-top: 0px; font-size: 18px; color:#089; width: 100%; margin-left:auto;">
+				Tagline: Where All of your Audio Lives<br><br>
+				Audial is an application built to allow you to organize your music tastes from all corners of the net. Right now Soundcloud and Spotify are to be supported. Potentially last.fm as well. Stretch goals are: to implement the ability to follow/like the artists and songs found using this tool through the program in which they are listed in your own account; to add the functionality of playing your liked music artists or songs in a custom playlist and being able to shuffle them and loop them / skip ahead or go back etc.
+			</p>
+		</div>
+	</div>
+	<div class="ddocsection" style="width:100%; min-height:200px; padding-bottom:20px; font-family: 'Press Start 2P', cursive; background-color: #004444;">
+		<h3 class="ddocheading" style="width: 100%; margin-top:0px; margin-bottom:5px; height: 40px; font-size: 24px; background-color: #002004; color: #fff; vertical-align: middle; padding-top:10px;">Gamestate Pictures</h3>
+		<div style="width:100%; text-align:center; margin: 0 auto; margin-top: 0px; padding: 0px;"> <img src="0o.png"><img src="1.png"><img src="2.png"><img src="3.png"></div>
+	</div>
+	<div class="ddocsection" style="width:100%; min-height:200px; padding-bottom:20px; font-family: 'Press Start 2P', cursive; background-color: #004444;">
+		<h3 class="ddocheading" style="width: 100%; margin-top:0px; margin-bottom:5px; height: 40px; font-size: 24px; background-color: #002004; color: #fff; vertical-align: middle; padding-top:10px;">Functionality Needed</h3>
+		<div style="width:85%; margin: 0 auto; margin-top: 0px; padding: 0px;">
+			<ul class="ddoctext" style="line-height: 2.0; margin-top: 0px; font-size: 18px; color:#089; width: 100%; margin-left:auto;">
+				<li>APIs used: Soundcloud, Spotify, (last.fm), (echonest)</li>
+				<li>Soundcloud API: https://developers.soundcloud.com/</li>
+				<li>Freesound API: http://www.freesound.org/docs/api/</li>
+				<li>jQuery fades and slides between App States</li>
+				<li>Citations below</li>
+			<ul>
+		</div>
+	</div>
+	<div class="ddocsection" style="width:100%; min-height:200px; padding-bottom:20px; font-family: 'Press Start 2P', cursive; background-color: #004444;">
+		<h3 class="ddocheading" style="width: 100%; margin-top:0px; margin-bottom:5px; height: 40px; font-size: 24px; background-color: #002004; color: #fff; vertical-align: middle; padding-top:10px;">Stretch Goals</h3>
+		<div style="width:85%; margin: 0 auto; margin-top: 0px; padding: 0px;">
+			<ul class="ddoctext" style="line-height: 2.0; margin-top: 0px; font-size: 18px; color:#089; width: 100%; margin-left:auto;">
+				<li>last.fm API: http://www.last.fm/api</li>
+				<li>Tech: Presuming I have time, I'd like to implement something akin to Shazam to do music recognition from a sound sample; if I can implement the Echonest API, then I'll do that and maybe add functionality for drag and drop files as well</li>
+				<li>Echonest jQuery plugin: https://github.com/Rodeoclash/Echonest-jQuery-Plugin/tree/master/scripts</li>
+				<li>Also a possibility: http://www.slideshare.net/cweichen/gracenote-apimhd-16572093</li>
+				<li>Speech input --- <span style="color:#f00;">GOAL REACHED!!!</span></li>
+				<li>Follow/Like Artists and Songs through their respective sources</li>
+				<li>User Accounts</li>
+				<li>Playlisting</li>
+				<li>Bookmarks</li>
+				<li>More to be added later!!!</li>
+			<ul>
+		</div>
+	</div>
+	<div class="ddocsection" style="width:100%; min-height:200px; padding-bottom:20px; font-family: 'Press Start 2P', cursive; background-color: #004444;">
+		<h3 class="ddocheading" style="width: 100%; margin-top:0px; margin-bottom:5px; height: 40px; font-size: 24px; background-color: #002004; color: #fff; vertical-align: middle; padding-top:10px;">Credit to the following:</h3>
+		<div style="width:85%; margin: 0 auto; margin-top: 0px; padding: 0px;"> 
+			<p class="ddoctext" style="line-height: 1.5; margin-top: 0px; font-size: 18px; color:#089; width: 100%; margin-left:auto; text-align: center;">
+					Thanks to jQuery, Freesound (ie. the MTG), and Soundcloud for providing the needed APIs and tools
+			</p>
+			<p class="ddoctext" style="line-height: 1.5; margin-top: 0px; font-size: 18px; color:#089; width: 100%; margin-left:auto; text-align: center;">
+					Argzero, All rights reserved
+			</p>
+		</div>
+	</div>
+	<script src="http://code.createjs.com/preloadjs-0.4.1.min.js"></script>
+	<script src="http://code.createjs.com/soundjs-0.5.2.min.js"></script>
+</body>
+</html>
